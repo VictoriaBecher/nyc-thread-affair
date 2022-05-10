@@ -195,7 +195,7 @@ export default function Footer() {
         <p className="mb-2">©2019 THREAD AFFAIR. All Rights Reserved.</p>
 
         <p className="d-flex align-items-center justify-content-center">
-          Desgined by
+          Designed by
           <img
             src="/images/pixellab_logo.jpg"
             alt="Pixellab"
