@@ -1,14 +1,33 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import ProductTile from './catalog/product-tile';
+import HomeCarousel from './homepage/home-carousel';
 import HomeNewsletter from './homepage/home-newsletter';
 
 export default function Main() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/products').then((response) => {
+      const { data } = response;
+
+      setProducts(data);
+    });
+  }, []);
+
+  if (products.length <= 0) {
+    return 'loading';
+  }
+
   return (
     <main className="content">
       <header className="content-header">
-        <div className="banner-main">
+        <HomeCarousel></HomeCarousel>
+
+        {/* <div className="banner-main">
           <div className="banner-main-inner container">
             <div className="banner-info">
-              <h1>Office Suit</h1>
+              <h1>Office Suits</h1>
               <h2>Get back to work in style</h2>
 
               <a
@@ -22,8 +41,8 @@ export default function Main() {
 
             <div className="banner-copy">
               <p>
-                <span>A tailored suit</span> that will fit you perfectly is a
-                dream for everybody.
+                <span>A tailored suit</span>
+                that will fit you perfectly is a dream for everybody.
               </p>
 
               <p className="d-none d-lg-block">
@@ -32,7 +51,7 @@ export default function Main() {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </header>
 
       <section className="content-main">
@@ -48,22 +67,22 @@ export default function Main() {
             </p>
             <p>
               For the finest custom tailored experience, be sure to explore our
-              selection of premium fabrics from one of the worlds oldest fabric
+              selection of premium fabrics from one of the world's oldest fabric
               mills, Vitale Barberis Canonico.
             </p>
           </header>
 
           <section className="product-tiles row">
             <div className="col-12 col-lg-3">
-              <ProductTile></ProductTile>
+              <ProductTile product={products[0]}></ProductTile>
             </div>
 
-            <div className="col-12 mt-4 offset-lg-1 mt-lg-0 col-lg-3">
-              <ProductTile></ProductTile>
+            <div className="col-12 col-lg-3 offset-lg-1 mt-4 mt-lg-0">
+              <ProductTile product={products[1]}></ProductTile>
             </div>
 
-            <div className="col-12 mt-4 offset-lg-1 mt-lg-0 col-lg-3">
-              <ProductTile></ProductTile>
+            <div className="col-12 col-lg-3 offset-lg-1 mt-4 mt-lg-0">
+              <ProductTile product={products[2]}></ProductTile>
             </div>
           </section>
 
@@ -86,17 +105,17 @@ export default function Main() {
             </p>
             <p>
               For the finest custom tailored experience, be sure to explore our
-              selection of premium fabrics from one of the worlds oldest fabric
+              selection of premium fabrics from one of the world's oldest fabric
               mills, Vitale Barberis Canonico.
             </p>
           </header>
 
           <section className="product-tiles">
-            <ProductTile></ProductTile>
+            <ProductTile product={products[3]}></ProductTile>
 
-            <ProductTile></ProductTile>
+            <ProductTile product={products[4]}></ProductTile>
 
-            <ProductTile></ProductTile>
+            <ProductTile product={products[5]}></ProductTile>
           </section>
 
           <footer>
@@ -118,22 +137,22 @@ export default function Main() {
             </p>
             <p>
               For the finest custom tailored experience, be sure to explore our
-              selection of premium fabrics from one of the worlds oldest fabric
+              selection of premium fabrics from one of the world's oldest fabric
               mills, Vitale Barberis Canonico.
             </p>
           </header>
 
           <section className="product-tiles d-flex flex-column flex-lg-row justify-content-between">
             <div className="mb-5 mb-lg-0">
-              <ProductTile></ProductTile>
+              <ProductTile product={products[5]}></ProductTile>
             </div>
 
             <div className="mb-5 mb-lg-0">
-              <ProductTile></ProductTile>
+              <ProductTile product={products[2]}></ProductTile>
             </div>
 
             <div>
-              <ProductTile></ProductTile>
+              <ProductTile product={products[0]}></ProductTile>
             </div>
           </section>
 
@@ -147,7 +166,7 @@ export default function Main() {
         <section className="home-catalog-preview container demo-grid">
           <header>
             <h1 className="section-title">
-              <span>css</span> Grid layout
+              <span>CSS Grid</span> Layout
             </h1>
 
             <p>
@@ -156,17 +175,17 @@ export default function Main() {
             </p>
             <p>
               For the finest custom tailored experience, be sure to explore our
-              selection of premium fabrics from one of the worlds oldest fabric
+              selection of premium fabrics from one of the world's oldest fabric
               mills, Vitale Barberis Canonico.
             </p>
           </header>
 
           <section className="product-tiles">
-            <ProductTile></ProductTile>
+            <ProductTile product={products[3]}></ProductTile>
 
-            <ProductTile></ProductTile>
+            <ProductTile product={products[5]}></ProductTile>
 
-            <ProductTile></ProductTile>
+            <ProductTile product={products[2]}></ProductTile>
           </section>
 
           <footer>
@@ -187,31 +206,31 @@ export default function Main() {
 
           <ul>
             <li>
-              <img src="/images/payment/amazon.jpg" alt="" />
+              <img src="/images/payment/amazon.jpg" alt=""></img>
             </li>
 
             <li>
-              <img src="/images/payment/cirrus.jpg" alt="" />
+              <img src="/images/payment/cirrus.jpg" alt=""></img>
             </li>
 
             <li>
-              <img src="/images/payment/maestro.jpg" alt="" />
+              <img src="/images/payment/amazon.jpg" alt=""></img>
             </li>
 
             <li>
-              <img src="/images/payment/mastercard.jpg" alt="" />
+              <img src="/images/payment/amazon.jpg" alt=""></img>
             </li>
 
             <li>
-              <img src="/images/payment/paypal.jpg" alt="" />
+              <img src="/images/payment/amazon.jpg" alt=""></img>
             </li>
 
             <li>
-              <img src="/images/payment/visa_electron.jpg" alt="" />
+              <img src="/images/payment/amazon.jpg" alt=""></img>
             </li>
 
             <li>
-              <img src="/images/payment/visa.jpg" alt="" />
+              <img src="/images/payment/amazon.jpg" alt=""></img>
             </li>
           </ul>
         </section>
